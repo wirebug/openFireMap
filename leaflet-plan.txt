@@ -1,0 +1,48 @@
+Fullscreen:
+-----------
+✓ https://github.com/Leaflet/Leaflet.fullscreen
+
+Search:
+-------
+✓ https://github.com/perliedman/leaflet-control-geocoder
+http://labs.easyblog.it/maps/leaflet-search/
+https://github.com/smeijer/L.GeoSearch
+
+GEoJSON AJAX:
+-------------
+✓ https://github.com/calvinmetcalf/leaflet-ajax
+
+distance messer:
+----------------
+✓ https://github.com/jtreml/leaflet.measure
+
+
+Überlappende Marker in schön:
+------------------------------
+https://github.com/Leaflet/Leaflet.markercluster
+
+Indoor Plugin
+-----------------
+https://github.com/cbaines/leaflet-indoor
+
+AwesomeMarker- Inspiration
+---------------------------------
+https://github.com/lvoogdt/Leaflet.awesome-markers
+
+Font Awesome Button
+----------------
+https://github.com/CliffCloud/Leaflet.EasyButton
+
+Info-Loader
+-----------------
+http://yohanboniface.github.io/Leaflet.RevealOSM/
+
+print:
+-----------
+https://github.com/rowanwins/leaflet-easyPrint
+
+3d bulidings
+-----------
+http://osmbuildings.org/?lat=52.51927&lon=13.40835&zoom=17
+
+        

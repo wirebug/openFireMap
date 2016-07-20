@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <title>OpenFireMap Wetter Ruhr</title>
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/map.css" />
+
+</head>
+
+<body>
+
+    <div id="map" style="width: 1000px; height: 600px"></div>
+    <script src="js/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([51.3619, 7.3719], 16);
+
+        var mbAttr = '',
+            mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
+
+        var waterPipesData = {
+            "features": [{
+                "geometry": {
+                    "coordinates": [7.366587817668915, 51.36295539693904],
+                    "type": "Point"
+                },
+                "properties": {
+                    "description": "Löscheinheit 62",
+                    "id": "marker-marker-hupv93vz15",
+                    "marker-color": "#f86767",
+                    "marker-size": "medium",
+                    "marker-symbol": "fire-station",
+                    "title": "Gerätehaus Grundschöttel"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [
+                        [7.369658946990967, 51.36157204871418],
+                        [7.370629906654357, 51.360034573940624]
+                    ],
+                    "type": "LineString"
+                },
+                "properties": {
+                    "description": "",
+                    "id": "marker-huq1ikcz0",
+                    "stroke": "#1087bf",
+                    "stroke-opacity": 1,
+                    "stroke-width": 6,
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3632667, 51.3609141],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990399",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "green",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p20",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50307",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3632514, 51.3610183],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990405",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:count": "2",
+                    "fire_hydrant:diameter": "80",
+                    "fire_hydrant:position": "green",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p51",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "81061/81062",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3646963, 51.3619794],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990410",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p52",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50409",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3646224, 51.3620336],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990415",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "150",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p63",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "60887",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3688466, 51.3622013],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990419",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p64",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51378",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3688185, 51.3622172],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990425",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p65",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51379",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.365585, 51.3622395],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990430",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "150",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p66",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "60874",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3711565, 51.3623522],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990435",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p67",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51381",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3716008, 51.3625],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990440",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p78",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51382",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3670151, 51.3626256],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990445",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p79",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51377",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3672807, 51.3626509],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990450",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p7a",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50309",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3671603, 51.3626744],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990453",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p7b",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50311",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3652856, 51.3627018],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990458",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "80",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p7c",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50318",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3671119, 51.3627601],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990463",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p8d",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51376",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3701488, 51.3628771],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990468",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p8e",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51383",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3704184, 51.3629373],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990473",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p8f",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51380",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3651209, 51.3629745],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990478",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:count": "2",
+                    "fire_hydrant:diameter": "150",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p8g",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50555/50689",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.365884, 51.3638167],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990483",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "150",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p8h",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50313",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3659495, 51.3638273],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990489",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "150",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p8i",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50312",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3657546, 51.3639203],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990493",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "250",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p8j",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50314",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3659446, 51.3639443],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990498",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "300",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p8k",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50315",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3673177, 51.3642362],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990503",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "80",
+                    "fire_hydrant:position": "green",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p8l",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50316",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3704124, 51.3582816],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365738",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p8m",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "95358",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3693722, 51.3584368],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365744",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p8n",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "99186",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3688367, 51.3589207],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365754",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p8o",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "99189",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3712706, 51.3591428],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365758",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p8p",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "99183",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3742211, 51.3595173],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365762",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p8q",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "95359",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3732816, 51.3597309],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365772",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p8r",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "99178",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3706357, 51.360024],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365784",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p9s",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "99178",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3728578, 51.3605487],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365788",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p9t",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "99179",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3680777, 51.3612596],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365792",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p9u",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51388",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3683469, 51.3613423],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365796",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p9v",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51387",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3696575, 51.3615356],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365800",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p9w",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51384",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3696748, 51.3616123],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365804",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p9x",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51385",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3693894, 51.3616645],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365808",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p9y",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51386",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3672804, 51.3617683],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365812",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p9z",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51389",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3614795, 51.3600163],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2852869278",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p910",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "ref": "60884",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3616716, 51.3605209],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2852925992",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "green",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzl7p911",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50306",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3629661, 51.3598205],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2852942421",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:position": "green",
+                    "fire_hydrant:type": "pillar",
+                    "id": "marker-hvyzl7p912",
+                    "marker-color": "f86767",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "25",
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3632667, 51.3609141],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990399",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "green",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn11t13",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50307",
+                    "title": "50307"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3632514, 51.3610183],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990405",
+                    "description": "80",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:count": "2",
+                    "fire_hydrant:diameter": "80",
+                    "fire_hydrant:position": "green",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn11x14",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "81061/81062",
+                    "title": "81061/81062"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3646963, 51.3619794],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990410",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn11y15",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50409",
+                    "title": "50409"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3646224, 51.3620336],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990415",
+                    "description": "150",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "150",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn11y16",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "60887",
+                    "title": "60887"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3688466, 51.3622013],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990419",
+                    "description": "200",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn11z17",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51378",
+                    "title": "51378"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3688185, 51.3622172],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990425",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn11z18",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51379",
+                    "title": "51379"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.365585, 51.3622395],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990430",
+                    "description": "150",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "150",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12019",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "60874",
+                    "title": "60874"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3711565, 51.3623522],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990435",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn1211a",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51381",
+                    "title": "51381"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3716008, 51.3625],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990440",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn1211b",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51382",
+                    "title": "51382"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3670151, 51.3626256],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990445",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn1221c",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51377",
+                    "title": "51377"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3672807, 51.3626509],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990450",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn1231d",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50309",
+                    "title": "50309"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3671603, 51.3626744],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990453",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn1241e",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50311",
+                    "title": "50311"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3652856, 51.3627018],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990458",
+                    "description": "80",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "80",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn1241f",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50318",
+                    "title": "50318"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3671119, 51.3627601],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990463",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn1251g",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51376",
+                    "title": "51376"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3701488, 51.3628771],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990468",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn1261h",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51383",
+                    "title": "51383"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3704184, 51.3629373],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990473",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn1261i",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51380",
+                    "title": "51380"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3651209, 51.3629745],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990478",
+                    "description": "150",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:count": "2",
+                    "fire_hydrant:diameter": "150",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn1271j",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50555/50689",
+                    "title": "50555/50689"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.365884, 51.3638167],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990483",
+                    "description": "150",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "150",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn1271k",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50313",
+                    "title": "50313"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3659495, 51.3638273],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990489",
+                    "description": "150",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "150",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn1281l",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50312",
+                    "title": "50312"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3657546, 51.3639203],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990493",
+                    "description": "250",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "250",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn1281m",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50314",
+                    "title": "50314"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3659446, 51.3639443],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990498",
+                    "description": "300",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "300",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn1291n",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50315",
+                    "title": "50315"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3673177, 51.3642362],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2697990503",
+                    "description": "80",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "80",
+                    "fire_hydrant:position": "green",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12a1o",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50316",
+                    "title": "50316"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3704124, 51.3582816],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365738",
+                    "description": "200",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12a1p",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "95358",
+                    "title": "95358"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3693722, 51.3584368],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365744",
+                    "description": "200",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12b1q",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "99186",
+                    "title": "99186"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3688367, 51.3589207],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365754",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12b1r",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "99189",
+                    "title": "99189"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3712706, 51.3591428],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365758",
+                    "description": "200",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12c1s",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "99183",
+                    "title": "99183"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3742211, 51.3595173],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365762",
+                    "description": "200",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12d1t",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "95359",
+                    "title": "95359"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3732816, 51.3597309],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365772",
+                    "description": "200",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12d1u",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "99178",
+                    "title": "99178"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3706357, 51.360024],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365784",
+                    "description": "200",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12e1v",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "99178",
+                    "title": "99178"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3728578, 51.3605487],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365788",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12e1w",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "99179",
+                    "title": "99179"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3680777, 51.3612596],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365792",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12f1x",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51388",
+                    "title": "51388"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3683469, 51.3613423],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365796",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12f1y",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51387",
+                    "title": "51387"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3696575, 51.3615356],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365800",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12g1z",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51384",
+                    "title": "51384"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3696748, 51.3616123],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365804",
+                    "description": "200",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12g20",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51385",
+                    "title": "51385"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3693894, 51.3616645],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365808",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12h21",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51386",
+                    "title": "51386"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3672804, 51.3617683],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2704365812",
+                    "description": "100",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "100",
+                    "fire_hydrant:position": "sidewalk",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12h22",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "51389",
+                    "title": "51389"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3614795, 51.3600163],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2852869278",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:position": "lane",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12h23",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "ref": "60884",
+                    "title": "60884"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3616716, 51.3605209],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2852925992",
+                    "description": "200",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:diameter": "200",
+                    "fire_hydrant:position": "green",
+                    "fire_hydrant:type": "underground",
+                    "id": "marker-hvyzn12i24",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "50306",
+                    "title": "50306"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [7.3629661, 51.3598205],
+                    "type": "Point"
+                },
+                "properties": {
+                    "@id": "node/2852942421",
+                    "description": "",
+                    "emergency": "fire_hydrant",
+                    "fire_hydrant:position": "green",
+                    "fire_hydrant:type": "pillar",
+                    "id": "marker-hvyzn12i25",
+                    "marker-color": "",
+                    "marker-size": "",
+                    "marker-symbol": "h",
+                    "operator": "AVU",
+                    "ref": "25",
+                    "title": "25"
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [
+                        [7.370624542236328, 51.360034573940624],
+                        [7.371289730072021, 51.35914690160694],
+                        [7.37330138683319, 51.35973980163949],
+                        [7.372899055480956, 51.36062076322045]
+                    ],
+                    "type": "LineString"
+                },
+                "properties": {
+                    "description": "",
+                    "id": "marker-hvyzoa1g26",
+                    "stroke": "#1087bf",
+                    "stroke-opacity": 1,
+                    "stroke-width": 6,
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [
+                        [7.37330138683319, 51.35974315133539],
+                        [7.37481415271759, 51.36005467198299],
+                        [7.374991178512572, 51.35978334766703],
+                        [7.374229431152344, 51.359515371456425],
+                        [7.370393872261048, 51.3582860104971],
+                        [7.369868159294128, 51.358131919330575],
+                        [7.369353175163268, 51.35844010114528],
+                        [7.3688435554504395, 51.35891911876291]
+                    ],
+                    "type": "LineString"
+                },
+                "properties": {
+                    "description": "",
+                    "id": "marker-hvyzot1i27",
+                    "stroke": "#1087bf",
+                    "stroke-opacity": 1,
+                    "stroke-width": 6,
+                    "title": ""
+                },
+                "type": "Feature"
+            }, {
+                "geometry": {
+                    "coordinates": [
+                        [7.369433641433715, 51.358463549676706],
+                        [7.371279001235962, 51.35914690160694]
+                    ],
+                    "type": "LineString"
+                },
+                "properties": {
+                    "description": "",
+                    "id": "marker-hvyzp1wu28",
+                    "stroke": "#1087bf",
+                    "stroke-opacity": 1,
+                    "stroke-width": 6,
+                    "title": ""
+                },
+                "type": "Feature"
+            }],
+            "id": "lokalhorst.i4o5j25n",
+            "type": "FeatureCollection"
+        }
+        var streets = L.tileLayer(mbUrl, {
+            id: 'lokalhorst.i4pa35h8',
+            attribution: mbAttr
+        }).addTo(map),
+            terrain = L.tileLayer(mbUrl, {
+                id: 'lokalhorst.i4p9onln',
+                attribution: mbAttr
+            }),
+            waterPipes = L.geoJson(waterPipesData).addTo(map);
+
+
+        var fire = L.tileLayer('http://openfiremap.org/hytiles/{z}/{x}/{y}.png', {
+            /*attribution: '© OpenFireMap contributors - © OpenStreetMap contributors',*/
+            continuousWorld: true
+        }).addTo(map);
+
+
+
+
+        var baseLayers = {
+            "Straßen": streets,
+            "Terrain": terrain
+        };
+        var overlays = {
+            "Hydranten": fire,
+            "Wasserleitungen": waterPipes
+        };
+
+        map.attributionControl.removeAttribution();
+        map.attributionControl.setPrefix('');
+         //L.control.attributtion({postion: 'bottomright', prefix: '.'}).addTo(map);
+        L.control.layers(baseLayers, overlays).addTo(map);
+    </script>
+</body>
+
+</html>
