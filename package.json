@@ -1,0 +1,33 @@
+{
+  "name": "openfiremap",
+  "version": "1.0.0",
+  "description": "Display hydrants data from OpenStreetMap",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wirebug/openFireMap.git"
+  },
+  "keywords": [
+    "hydrants",
+    "openstreetmap",
+    "firefighting"
+  ],
+  "author": "Christoph Weinzierl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wirebug/openFireMap/issues"
+  },
+  "homepage": "https://hydranten.fw-wetter.de",
+  "dependencies": {
+    "leaflet": "^1.7.1",
+    "leaflet.markercluster": "^1.5.3"
+  },
+  "devDependencies": {
+    "prettier": "2.5.1",
+    "webpack": "^5.69.0",
+    "webpack-cli": "^4.9.2"
+  }
+}

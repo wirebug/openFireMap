@@ -1,0 +1,11 @@
+*.test.js
+node_modules
+__mocks
+.next
+*.min.js
+dist
+public
+coverage
+build
+__snapshots__
+**/*.js
